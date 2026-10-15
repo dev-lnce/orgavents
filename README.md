@@ -15,8 +15,8 @@ Use the **⚡ Instant Demo Login** buttons on the login page:
 | Role | Email | Password |
 |------|-------|----------|
 | Admin | `admin@orgavents.edu` | `Password123!` |
-| Organizer | `jpcs.organizer@dlsl.edu.ph` | `Password123!` |
-| Member | `lance.devilla@dlsl.edu.ph` | `Password123!` |
+| Organizer | `organizer@campus.edu` | `Password123!` |
+| Member | `member@campus.edu` | `Password123!` |
 
 > **Reset Demo Data**: Click the "Reset Demo Data" button (bottom-right corner) to wipe `localStorage` back to seed state.
 

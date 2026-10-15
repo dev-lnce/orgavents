@@ -104,24 +104,24 @@ function clearAttempts(email) {
 }
 
 // ─── Seed Data ────────────────────────────────────────────────────────────────
-const SEED_VERSION = 'v5'; // bump to force re-seed on next load
+const SEED_VERSION = 'v6'; // bump to force re-seed on next load
 
 /**
- * Build realistic DLSL campus demo data.
+ * Build realistic campus demo data.
  * Dates: anchored relative to NOW so events always look "recent".
  */
 function buildSeedData() {
   const adminId = generateId();
-  const jpcsOrganizerId = generateId();
-  const citeOrganizerId = generateId();
-  const lanceId = generateId();
-  const charlesId = generateId();
-  const cjId = generateId();
-  const josiahId = generateId();
-  const mariaId = generateId();
-  const juanId = generateId();
-  const beaId = generateId();
-  const angeloId = generateId();
+  const csSocietyOrganizerId = generateId();
+  const councilOrganizerId = generateId();
+  const alexId = generateId();
+  const samId = generateId();
+  const jordanId = generateId();
+  const taylorId = generateId();
+  const caseyId = generateId();
+  const morganId = generateId();
+  const jamieId = generateId();
+  const rileyId = generateId();
   const inactiveId = generateId();
 
   const users = [
@@ -135,90 +135,90 @@ function buildSeedData() {
       createdAt: new Date(Date.now() - 180 * 86400000).toISOString(),
     },
     {
-      _id: jpcsOrganizerId,
-      name: 'JPCS DLSL Chapter',
-      email: 'jpcs.organizer@dlsl.edu.ph',
+      _id: csSocietyOrganizerId,
+      name: 'Computer Science Society',
+      email: 'organizer@campus.edu',
       password: hashPassword('Password123!'),
       role: 'organizer',
       isActive: true,
       createdAt: new Date(Date.now() - 90 * 86400000).toISOString(),
     },
     {
-      _id: citeOrganizerId,
-      name: 'CITE Student Council',
-      email: 'cite.council@dlsl.edu.ph',
+      _id: councilOrganizerId,
+      name: 'Engineering Student Council',
+      email: 'engineering.council@campus.edu',
       password: hashPassword('Password123!'),
       role: 'organizer',
       isActive: true,
       createdAt: new Date(Date.now() - 85 * 86400000).toISOString(),
     },
     {
-      _id: lanceId,
-      name: 'Lance De Villa',
-      email: 'lance.devilla@dlsl.edu.ph',
+      _id: alexId,
+      name: 'Alex Rivera',
+      email: 'member@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 60 * 86400000).toISOString(),
     },
     {
-      _id: charlesId,
-      name: 'Charles Theodore Estrada',
-      email: 'charles.estrada@dlsl.edu.ph',
+      _id: samId,
+      name: 'Sam Cruz',
+      email: 'sam.cruz@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 58 * 86400000).toISOString(),
     },
     {
-      _id: cjId,
-      name: 'CJ Nicko Rosales',
-      email: 'cj.rosales@dlsl.edu.ph',
+      _id: jordanId,
+      name: 'Jordan Reyes',
+      email: 'jordan.reyes@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 55 * 86400000).toISOString(),
     },
     {
-      _id: josiahId,
-      name: 'Josiah Lamuel Rosell',
-      email: 'josiah.rosell@dlsl.edu.ph',
+      _id: taylorId,
+      name: 'Taylor Santos',
+      email: 'taylor.santos@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 52 * 86400000).toISOString(),
     },
     {
-      _id: mariaId,
-      name: 'Maria Clara Santos',
-      email: 'maria.santos@dlsl.edu.ph',
+      _id: caseyId,
+      name: 'Casey Lim',
+      email: 'casey.lim@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 50 * 86400000).toISOString(),
     },
     {
-      _id: juanId,
-      name: 'Juan Carlos Dizon',
-      email: 'juancarlos.dizon@dlsl.edu.ph',
+      _id: morganId,
+      name: 'Morgan Lee',
+      email: 'morgan.lee@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 48 * 86400000).toISOString(),
     },
     {
-      _id: beaId,
-      name: 'Bea Patricia Reyes',
-      email: 'bea.reyes@dlsl.edu.ph',
+      _id: jamieId,
+      name: 'Jamie Flores',
+      email: 'jamie.flores@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
       createdAt: new Date(Date.now() - 45 * 86400000).toISOString(),
     },
     {
-      _id: angeloId,
-      name: 'Angelo Miguel Castro',
-      email: 'angelo.castro@dlsl.edu.ph',
+      _id: rileyId,
+      name: 'Riley Diaz',
+      email: 'riley.diaz@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: true,
@@ -227,7 +227,7 @@ function buildSeedData() {
     {
       _id: inactiveId,
       name: 'Inactive Student',
-      email: 'inactive.student@dlsl.edu.ph',
+      email: 'inactive.student@campus.edu',
       password: hashPassword('Password123!'),
       role: 'member',
       isActive: false, // FR-AUTH-06: deactivated account
@@ -249,13 +249,13 @@ function buildSeedData() {
       description:
         'A hands-on beginner workshop covering Git basics, branching, pull requests, and collaborating on GitHub. Bring your laptop and leave ready to contribute to real projects.',
       date: new Date(Date.now() + 7 * 86400000).toISOString(), // 7 days from now
-      venue: 'CITE Lab 301, St. La Salle Building',
+      venue: 'Tech Building Lab 304',
       capacity: 40,
       registeredCount: 6,
       organizer: {
-        _id: jpcsOrganizerId,
-        name: 'JPCS DLSL Chapter',
-        email: 'jpcs.organizer@dlsl.edu.ph',
+        _id: csSocietyOrganizerId,
+        name: 'Computer Science Society',
+        email: 'organizer@campus.edu',
       },
       createdAt: new Date(Date.now() - 14 * 86400000).toISOString(),
     },
@@ -265,13 +265,13 @@ function buildSeedData() {
       description:
         'Build a working IoT sensor mesh using Arduino, LoRa modules, and a Raspberry Pi gateway. Students will program live sensor nodes and visualize data on a dashboard.',
       date: new Date(Date.now() + 14 * 86400000).toISOString(), // 14 days from now
-      venue: 'Electronics Lab 203, De La Salle Building',
+      venue: 'Engineering Center Room 203',
       capacity: 25,
       registeredCount: 4,
       organizer: {
-        _id: jpcsOrganizerId,
-        name: 'JPCS DLSL Chapter',
-        email: 'jpcs.organizer@dlsl.edu.ph',
+        _id: csSocietyOrganizerId,
+        name: 'Computer Science Society',
+        email: 'organizer@campus.edu',
       },
       createdAt: new Date(Date.now() - 10 * 86400000).toISOString(),
     },
@@ -281,29 +281,29 @@ function buildSeedData() {
       description:
         'A half-day symposium featuring three talks on AI bias in hiring, responsible ML deployment, and securing web APIs against common OWASP vulnerabilities.',
       date: new Date(Date.now() + 21 * 86400000).toISOString(), // 21 days from now
-      venue: 'Multipurpose Hall A, St. Miguel Building',
+      venue: 'Auditorium Hall A',
       capacity: 5, // intentionally small so it shows "Full" state
       registeredCount: 5, // FULL — FR-REG-04 demo
       organizer: {
-        _id: citeOrganizerId,
-        name: 'CITE Student Council',
-        email: 'cite.council@dlsl.edu.ph',
+        _id: councilOrganizerId,
+        name: 'Engineering Student Council',
+        email: 'engineering.council@campus.edu',
       },
       createdAt: new Date(Date.now() - 7 * 86400000).toISOString(),
     },
     {
       _id: froshieId,
-      title: 'CITE Froshie Orientation',
+      title: 'Campus Freshmen Orientation',
       description:
-        'Welcome orientation for incoming CITE freshmen. Learn about academic policies, meet your professors, explore student organizations, and enjoy icebreakers with your new batchmates.',
+        'Welcome orientation for incoming freshmen. Learn about academic policies, meet your professors, explore student organizations, and enjoy icebreakers with your new batchmates.',
       date: new Date(Date.now() - 10 * 86400000).toISOString(), // 10 days AGO — past event
-      venue: 'DLSL Main Auditorium',
+      venue: 'Student Activity Center',
       capacity: 50,
       registeredCount: 7,
       organizer: {
-        _id: citeOrganizerId,
-        name: 'CITE Student Council',
-        email: 'cite.council@dlsl.edu.ph',
+        _id: councilOrganizerId,
+        name: 'Engineering Student Council',
+        email: 'engineering.council@campus.edu',
       },
       createdAt: new Date(Date.now() - 30 * 86400000).toISOString(),
     },
@@ -311,15 +311,15 @@ function buildSeedData() {
       _id: networkingId,
       title: 'Industry Networking Night 2026',
       description:
-        'Connect with DLSL alumni working at top tech companies. Bring your resume and LinkedIn QR code. Refreshments provided.',
+        'Connect with campus alumni working at top tech companies. Bring your resume and LinkedIn QR code. Refreshments provided.',
       date: new Date(Date.now() + 30 * 86400000).toISOString(),
-      venue: 'La Salle Hall, Main Campus',
+      venue: 'University Grand Hall',
       capacity: 80,
       registeredCount: 22,
       organizer: {
-        _id: citeOrganizerId,
-        name: 'CITE Student Council',
-        email: 'cite.council@dlsl.edu.ph',
+        _id: councilOrganizerId,
+        name: 'Engineering Student Council',
+        email: 'engineering.council@campus.edu',
       },
       createdAt: new Date(Date.now() - 5 * 86400000).toISOString(),
     },
@@ -337,38 +337,38 @@ function buildSeedData() {
 
   const registrations = [
     // Git Workshop — 6 RSVPs, 2 checked in
-    reg(lanceId, gitWorkshopId, true),
-    reg(charlesId, gitWorkshopId, true),
-    reg(cjId, gitWorkshopId, false),
-    reg(josiahId, gitWorkshopId, false),
-    reg(mariaId, gitWorkshopId, false),
-    reg(juanId, gitWorkshopId, false),
+    reg(alexId, gitWorkshopId, true),
+    reg(samId, gitWorkshopId, true),
+    reg(jordanId, gitWorkshopId, false),
+    reg(taylorId, gitWorkshopId, false),
+    reg(caseyId, gitWorkshopId, false),
+    reg(morganId, gitWorkshopId, false),
 
     // IoT Lab — 4 RSVPs, none checked in
-    reg(lanceId, iotLabId, false),
-    reg(beaId, iotLabId, false),
-    reg(angeloId, iotLabId, false),
-    reg(charlesId, iotLabId, false),
+    reg(alexId, iotLabId, false),
+    reg(jamieId, iotLabId, false),
+    reg(rileyId, iotLabId, false),
+    reg(samId, iotLabId, false),
 
     // AI Symposium — FULL (5/5)
-    reg(lanceId, aiSymposiumId, false),
-    reg(charlesId, aiSymposiumId, false),
-    reg(cjId, aiSymposiumId, false),
-    reg(mariaId, aiSymposiumId, false),
-    reg(juanId, aiSymposiumId, false),
+    reg(alexId, aiSymposiumId, false),
+    reg(samId, aiSymposiumId, false),
+    reg(jordanId, aiSymposiumId, false),
+    reg(caseyId, aiSymposiumId, false),
+    reg(morganId, aiSymposiumId, false),
 
-    // Froshie Orientation — past event, 7 RSVPs, 5 checked in
-    reg(lanceId, froshieId, true),
-    reg(charlesId, froshieId, true),
-    reg(cjId, froshieId, true),
-    reg(josiahId, froshieId, true),
-    reg(mariaId, froshieId, true),
-    reg(juanId, froshieId, false),
-    reg(beaId, froshieId, false),
+    // Freshmen Orientation — past event, 7 RSVPs, 5 checked in
+    reg(alexId, froshieId, true),
+    reg(samId, froshieId, true),
+    reg(jordanId, froshieId, true),
+    reg(taylorId, froshieId, true),
+    reg(caseyId, froshieId, true),
+    reg(morganId, froshieId, false),
+    reg(jamieId, froshieId, false),
 
     // Networking Night
-    reg(angeloId, networkingId, false),
-    reg(beaId, networkingId, false),
+    reg(rileyId, networkingId, false),
+    reg(jamieId, networkingId, false),
   ];
 
   return { users, events, registrations };

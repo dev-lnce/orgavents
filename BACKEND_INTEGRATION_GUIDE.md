@@ -1,7 +1,7 @@
 # OrgaVents — Backend Integration Guide
 
-> **For:** Charles Estrada, CJ Nicko Rosales, Josiah Rosell (Backend Team)
-> **From:** Lance De Villa (UI/UX)
+> **For:** Backend Engineering Team
+> **From:** Frontend Engineering Team
 > **Date:** October 2026 | v1.0
 
 ---
@@ -42,9 +42,9 @@ npm run dev
 | Role | Email |
 |------|-------|
 | Admin | `admin@orgavents.edu` |
-| Organizer | `jpcs.organizer@dlsl.edu.ph` |
-| Member | `lance.devilla@dlsl.edu.ph` |
-| Inactive | `inactive.student@dlsl.edu.ph` (tests FR-AUTH-06) |
+| Organizer | `organizer@campus.edu` |
+| Member | `member@campus.edu` |
+| Inactive | `inactive.student@campus.edu` (tests FR-AUTH-06) |
 
 > **Tip:** Use the ⚡ **Instant Demo Login** buttons on the login page to log in with one click.
 > 
@@ -407,8 +407,8 @@ Run once: `node scripts/seedAdmin.js`
   "token": "<JWT signed with JWT_SECRET, expires in JWT_EXPIRES_IN>",
   "user": {
     "_id": "64a...",
-    "name": "Lance De Villa",
-    "email": "lance.devilla@dlsl.edu.ph",
+    "name": "Alex Rivera",
+    "email": "member@campus.edu",
     "role": "member",
     "isActive": true,
     "createdAt": "2026-09-01T00:00:00.000Z"
@@ -434,7 +434,7 @@ Run once: `node scripts/seedAdmin.js`
 
 **Request body:**
 ```json
-{ "name": "New Student", "email": "student@dlsl.edu.ph", "password": "SecurePass1!" }
+{ "name": "New Student", "email": "student@campus.edu", "password": "SecurePass1!" }
 ```
 
 **Success `201` response:**
@@ -501,13 +501,13 @@ GET /api/events?from=2026-09-01T00:00:00Z&to=2026-11-30T23:59:59Z
     "title": "Intro to Git & GitHub Workshop",
     "description": "...",
     "date": "2026-10-22T08:00:00.000Z",
-    "venue": "CITE Lab 301",
+    "venue": "Tech Building Lab 304",
     "capacity": 40,
     "registeredCount": 6,
     "organizer": {
       "_id": "64b...",
-      "name": "JPCS DLSL Chapter",
-      "email": "jpcs.organizer@dlsl.edu.ph"
+      "name": "Computer Science Society",
+      "email": "organizer@campus.edu"
     },
     "createdAt": "2026-10-01T00:00:00.000Z"
   }
@@ -542,7 +542,7 @@ Returns the same shape as a single event from `getAll`. The UI reads `registered
   "title": "New Workshop",
   "description": "Optional description...",
   "date": "2026-11-15T09:00:00.000Z",
-  "venue": "CITE Lab 301",
+  "venue": "Tech Building Lab 304",
   "capacity": 30
 }
 ```
@@ -591,7 +591,7 @@ Admin event list returns all events (no organizer filter). Also cascades to dele
 ```json
 {
   "_id": "64c...",
-  "user": { "_id": "...", "name": "Lance De Villa", "email": "lance.devilla@dlsl.edu.ph" },
+  "user": { "_id": "...", "name": "Alex Rivera", "email": "member@campus.edu" },
   "event": { "_id": "...", "title": "Intro to Git Workshop", "date": "..." },
   "checkedIn": false,
   "checkedInAt": null,
@@ -647,7 +647,7 @@ Admin event list returns all events (no organizer filter). Also cascades to dele
 [
   {
     "_id": "64c...",
-    "user": { "_id": "...", "name": "Lance De Villa", "email": "lance.devilla@dlsl.edu.ph" },
+    "user": { "_id": "...", "name": "Alex Rivera", "email": "member@campus.edu" },
     "event": { "_id": "...", "title": "Intro to Git Workshop" },
     "checkedIn": false,
     "checkedInAt": null,
@@ -662,7 +662,7 @@ Admin event list returns all events (no organizer filter). Also cascades to dele
   "_id": "64c...",
   "checkedIn": true,
   "checkedInAt": "2026-10-22T09:14:32.000Z",
-  "user": { "_id": "...", "name": "Lance De Villa" }
+  "user": { "_id": "...", "name": "Alex Rivera" }
 }
 ```
 
@@ -681,7 +681,7 @@ Admin event list returns all events (no organizer filter). Also cascades to dele
 ```json
 {
   "eventId": "64a...",
-  "title": "CITE Froshie Orientation",
+  "title": "Campus Freshmen Orientation",
   "capacity": 50,
   "registered": 7,
   "checkedIn": 5,
@@ -798,13 +798,13 @@ Switch the UI to live mode (`VITE_USE_MOCK=false`) and test each module in order
 
 - [ ] **1. Health Check**: Start the server. `GET http://localhost:5000/api` returns `200 { status: "ok" }`. CORS header is present.
 
-- [ ] **2. Registration Flow**: Open `http://localhost:5173/signup`. Create a new account (`newtest@dlsl.edu.ph`, any password ≥8 chars). You should be auto-logged in and redirected to `/calendar`.
+- [ ] **2. Registration Flow**: Open `http://localhost:5173/signup`. Create a new account (`newtest@campus.edu`, any password ≥8 chars). You should be auto-logged in and redirected to `/calendar`.
 
-- [ ] **3. Login Flow**: Log out. Log back in with the same credentials. Then try `inactive.student@dlsl.edu.ph` / `Password123!` → should see 403 "Account deactivated" banner.
+- [ ] **3. Login Flow**: Log out. Log back in with the same credentials. Then try `inactive.student@campus.edu` / `Password123!` → should see 403 "Account deactivated" banner.
 
 - [ ] **4. Event Calendar**: Log in as organizer. Navigate to `/calendar`. All events should load. Month navigation should fetch fresh data. Verify `registeredCount` and `capacity` match the database.
 
-- [ ] **5. RSVP & Full-Event Block**: Log in as `lance.devilla@dlsl.edu.ph`. RSVP to an open event. Then RSVP to the "AI Ethics Symposium" (full event) → should see 409 "Event is full" inline error. RSVP to the "CITE Froshie Orientation" (past) → should see 409 "Registration closed."
+- [ ] **5. RSVP & Full-Event Block**: Log in as `member@campus.edu`. RSVP to an open event. Then RSVP to the "AI Ethics Symposium" (full event) → should see 409 "Event is full" inline error. RSVP to the "Campus Freshmen Orientation" (past) → should see 409 "Registration closed."
 
 - [ ] **6. Unregister Block**: Find a registration where `checkedIn=true`. Try to cancel it → should see 409 "Cannot cancel after check-in."
 
@@ -812,10 +812,10 @@ Switch the UI to live mode (`VITE_USE_MOCK=false`) and test each module in order
 
 - [ ] **8. Attendance Reports & Export**: Log in as organizer or admin. Go to `/reports`. Select the "Intro to Git Workshop." Verify `registered`, `checkedIn`, `noShows`, and `attendanceRate` match your DB. Click "Export CSV" → a CSV file should download. Open it and confirm no formula injection (values starting with `=` should be prefixed with `'`).
 
-- [ ] **9. Admin User Management**: Log in as admin. Go to `/admin/users`. Try deleting yourself (the last admin) → should see 409. Try deleting the JPCS organizer (who owns events) → should see 409. Deactivate `lance.devilla@dlsl.edu.ph`, then log in as Lance → should see 403.
+- [ ] **9. Admin User Management**: Log in as admin. Go to `/admin/users`. Try deleting yourself (the last admin) → should see 409. Try deleting the Computer Science Society organizer (who owns events) → should see 409. Deactivate `member@campus.edu`, then log in as Alex → should see 403.
 
-- [ ] **10. Mid-Session RBAC** (FR-AUTH-09): Log in as `lance.devilla@dlsl.edu.ph` in one tab. In another tab, log in as admin and deactivate Lance's account. Return to Lance's tab and navigate to any protected route → the UI should detect the 403 on the next `GET /api/users/:id` hydration and log Lance out automatically.
+- [ ] **10. Mid-Session RBAC** (FR-AUTH-09): Log in as `member@campus.edu` in one tab. In another tab, log in as admin and deactivate Alex's account. Return to Alex's tab and navigate to any protected route → the UI should detect the 403 on the next `GET /api/users/:id` hydration and log Alex out automatically.
 
 ---
 
-> **Questions?** Ping Lance on the group chat. The UI mock (`mockBackend.js`) is the living reference implementation for every business rule above — you can read it as pseudocode for your controllers.
+> **Questions?** Reach out to the Frontend Team. The UI mock (`mockBackend.js`) is the living reference implementation for every business rule above — you can read it as pseudocode for your controllers.

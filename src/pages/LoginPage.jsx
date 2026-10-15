@@ -81,8 +81,8 @@ export default function LoginPage() {
 
     const credentials = {
       admin: { email: 'admin@orgavents.edu', password: 'Password123!' },
-      organizer: { email: 'jpcs.organizer@dlsl.edu.ph', password: 'Password123!' },
-      member: { email: 'lance.devilla@dlsl.edu.ph', password: 'Password123!' },
+      organizer: { email: 'organizer@campus.edu', password: 'Password123!' },
+      member: { email: 'member@campus.edu', password: 'Password123!' },
     };
 
     const { email: demoEmail, password: demoPassword } = credentials[demoRole];
@@ -249,8 +249,8 @@ export default function LoginPage() {
                 onClick={() => USE_MOCK ? handleQuickLogin(role) : (() => {
                   const creds = {
                     admin: ['admin@orgavents.edu', 'Password123!'],
-                    organizer: ['jpcs.organizer@dlsl.edu.ph', 'Password123!'],
-                    member: ['lance.devilla@dlsl.edu.ph', 'Password123!'],
+                    organizer: ['organizer@campus.edu', 'Password123!'],
+                    member: ['member@campus.edu', 'Password123!'],
                   };
                   setEmail(creds[role][0]);
                   setPassword(creds[role][1]);
